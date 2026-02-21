@@ -1,14 +1,45 @@
-# RunAnywhere Web Starter App
+# RecipeSnap - AI-Powered Cooking Assistant
 
-A minimal React + TypeScript starter app demonstrating **on-device AI in the browser** using the [`@runanywhere/web`](https://www.npmjs.com/package/@runanywhere/web) SDK. All inference runs locally via WebAssembly — no server, no API key, 100% private.
+A revolutionary web app using **RunAnywhere SDK** that brings on-device AI to your kitchen. RecipeSnap combines Vision, Language, and Voice AI to create the ultimate hands-free cooking experience — 100% private, offline-capable, running entirely in your browser.
 
 ## Features
 
+### 1. Smart Ingredient Detection (VLM)
+- **Scan Your Fridge**: Take a photo of your fridge or pantry
+- **AI Recognition**: VLM identifies all visible ingredients automatically
+- **Manual Addition**: Add extra ingredients manually (spices, oils, etc.)
+- **Privacy First**: Images never leave your device
+
+### 2. Intelligent Recipe Generation (LLM)
+- **Personalized Recipes**: AI creates recipes using your available ingredients
+- **Detailed Instructions**: Step-by-step cooking guide
+- **Nutritional Info**: Get basic nutrition information
+- **Multiple Options**: Generate different recipes from the same ingredients
+
+### 3. Voice-Controlled Cooking (VAD + STT + TTS)
+- **Hands-Free Operation**: Perfect when your hands are messy
+- **Natural Commands**: 
+  - "Next step" - Move to the next instruction
+  - "Repeat step" - Hear the current step again
+  - "Substitution for X" - Get ingredient alternatives
+  - "Cooking tip" - Get helpful advice
+- **Real-Time Listening**: Voice Activity Detection knows when you're speaking
+- **Natural Voice Response**: AI speaks back with clear, natural TTS
+
+### 4. Smart Features
+- **Visual Progress**: See which steps are completed
+- **Step Navigation**: Manually move between steps
+- **Recipe Metadata**: Cook time, difficulty level, and nutrition
+- **Cooking Tips**: Ask questions during cooking
+
+## Original Demo Features
+
 | Tab | What it does |
 |-----|-------------|
-| **Chat** | Stream text from an on-device LLM (SmolLM2 360M) |
-| **Vision** | Point your camera and describe what the VLM sees (LFM2-VL 450M) |
-| **Voice** | Speak naturally — VAD detects speech, STT transcribes, LLM responds, TTS speaks back |
+| **🍳 RecipeSnap** | Full cooking assistant: scan ingredients, generate recipes, voice-guided cooking |
+| **💬 Chat** | Stream text from an on-device LLM (LFM2 350M) |
+| **📷 Vision** | Point your camera and describe what the VLM sees (LFM2-VL 450M) |
+| **🎙️ Voice** | Speak naturally — VAD detects speech, STT transcribes, LLM responds, TTS speaks back |
 
 ## Quick Start
 
@@ -17,7 +48,38 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173). Models are downloaded on first use and cached in the browser's Origin Private File System (OPFS).
+Open [http://localhost:5173](http://localhost:5173) (or the port shown in terminal). 
+
+**First Time Setup:**
+1. Models download on first use (~250MB total)
+2. Cached in browser's OPFS for instant reuse
+3. Grant camera and microphone permissions when prompted
+
+## How to Use RecipeSnap
+
+### Step 1: Scan Ingredients
+1. Click "Open Camera" to activate your device camera
+2. Point at your fridge, pantry, or ingredients on counter
+3. Click "📸 Scan Ingredients" to capture and analyze
+4. AI will list all detected ingredients
+5. (Optional) Add more ingredients manually
+
+### Step 2: Generate Recipe
+1. Review detected ingredients
+2. Click "✨ Generate Recipe"
+3. Wait 5-10 seconds for AI to create a personalized recipe
+4. View recipe name, ingredients, steps, cook time, and nutrition
+
+### Step 3: Voice Cooking Mode
+1. Click "🎙️ Start Voice Cooking"
+2. AI will read the first step aloud
+3. Say commands like:
+   - "Next step" - Move forward
+   - "Repeat" - Hear current step again
+   - "Substitute for chicken" - Get alternatives
+   - "Give me a tip" - Get cooking advice
+4. Navigate with voice or manual controls
+5. Click "⏹️ Stop Voice Mode" when done
 
 ## How It Works
 

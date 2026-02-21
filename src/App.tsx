@@ -3,13 +3,14 @@ import { initSDK, getAccelerationMode } from './runanywhere';
 import { ChatTab } from './components/ChatTab';
 import { VisionTab } from './components/VisionTab';
 import { VoiceTab } from './components/VoiceTab';
+import { RecipeSnapTab } from './components/RecipeSnapTab';
 
-type Tab = 'chat' | 'vision' | 'voice';
+type Tab = 'chat' | 'vision' | 'voice' | 'recipe';
 
 export function App() {
   const [sdkReady, setSdkReady] = useState(false);
   const [sdkError, setSdkError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<Tab>('chat');
+  const [activeTab, setActiveTab] = useState<Tab>('recipe');
 
   useEffect(() => {
     initSDK()
@@ -46,6 +47,9 @@ export function App() {
       </header>
 
       <nav className="tab-bar">
+        <button className={activeTab === 'recipe' ? 'active' : ''} onClick={() => setActiveTab('recipe')}>
+          🍳 RecipeSnap
+        </button>
         <button className={activeTab === 'chat' ? 'active' : ''} onClick={() => setActiveTab('chat')}>
           💬 Chat
         </button>
@@ -58,6 +62,7 @@ export function App() {
       </nav>
 
       <main className="tab-content">
+        {activeTab === 'recipe' && <RecipeSnapTab />}
         {activeTab === 'chat' && <ChatTab />}
         {activeTab === 'vision' && <VisionTab />}
         {activeTab === 'voice' && <VoiceTab />}
